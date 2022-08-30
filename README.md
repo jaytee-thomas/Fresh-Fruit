@@ -16,7 +16,7 @@ Build a web page using TypeScript which displays the fruits from the database us
 
 ### Tasks
 
-The Solution for this challenge can be done in 5 steps.
+The Solution for this challenge can be done in 6 steps.
 
 #### Step 1:
 
@@ -60,7 +60,7 @@ Color codes used:
 ### Instructions
 
 - Open the terminal in the root directory.
-- Give the command `tsc` in the terminal to compile `.ts` files. (No need to specify the path with file name(s) while giving `tsc` command).
-- Verify the converted files are located inside `public/js` folder.
+- Give the command `tsc` in the terminal to compile `.ts` files. (No need to specify the path with file name(s) while giving `tsc` command). 
+- Verify that `app.js` file is created inside `public/js` folder.
 - Start the json-server by giving the command `json-server fruits.json`
 - Run the `index.html` with live server which displays the fruits as cards.
