@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 //Declare global container constant to represent <div> container
-var container = document.getElementById('container');
+var container = document.getElementById('app');
 //Define Fruit Object type with required properties
 var Fruit = /** @class */ (function () {
     function Fruit(id, name, unit, price, image) {
@@ -105,12 +105,25 @@ function transform(data) {
     return transformedFruit;
 }
 //Inside showFruit() method, display each transformedFruit as card by creating HTML code and appending it to the div container
-function showFruit(fruit) {
-    var card = document.createElement('div');
+/*function showFruit(fruit: Fruit) {
+    const card = document.createElement('div');
     card.className = 'card';
-    card.innerHTML = "\n        <div class=\"card-image\">\n            <img src=\"".concat(fruit.getImage(), "\" alt=\"").concat(fruit.getName(), "\">\n        </div>\n        <div class=\"card-content\">\n            <h3 class=\"card-title\">").concat(fruit.getName(), "</h3>\n            <p class=\"card-text\">").concat(fruit.getUnit(), "</p>\n            <p class=\"card-text\">").concat(fruit.getPrice(), "</p>\n        </div>\n    ");
+    card.innerHTML = `
+        <div class="card-image">
+            <img width=100px height=100px src="${fruit.getImage()}" alt="${fruit.getName()}">
+        </div>
+        <div class="card-content">
+            <h3 class="card-title">${fruit.getName()}</h3>
+            <p class="card-text">${fruit.getUnit()}</p>
+            <p class="card-text">${fruit.getPrice()}</p>
+        </div>
+    `;
     container.appendChild(card);
-}
+}*/
+var showFruit = function (transformedFruit) {
+    var output = "\n              <div class=\"card\" id=\"fruit-card\">\n                  <img  width=100px height=100px src=".concat(transformedFruit.image, " alt=").concat(transformedFruit.name, " />\n                  <div class=\"card-body\">\n                     <h5 class=\"card-title\">").concat(transformedFruit.name, "</h5>\n                     <h6 class=\"card-subtitle mb-2 text-muted\">Price:$").concat(transformedFruit.price, "</h5>\n                  </div>\n                </div>\n          ");
+    container.innerHTML += output;
+};
 //Call getFruits() method globally
 getFruits().then(function (data) {
     var transformedFruit = transform(data);

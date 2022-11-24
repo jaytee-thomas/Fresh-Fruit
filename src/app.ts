@@ -1,5 +1,5 @@
 //Declare global container constant to represent <div> container
-const container = document.getElementById('container');
+const container = document.getElementById('app');
 
 //Define Fruit Object type with required properties
 class Fruit {
@@ -64,6 +64,7 @@ async function getFruits() {
     const response = await fetch('http://localhost:3000/fruits');
     const data = await response.json();
     return data;
+    
 }
 
 //Inside transform() method, iterate the json data and transform each fruit to transformedFruit object that mirrors Fruit type 
@@ -76,12 +77,12 @@ function transform(data: any) {
 }
 
 //Inside showFruit() method, display each transformedFruit as card by creating HTML code and appending it to the div container
-function showFruit(fruit: Fruit) {
+/*function showFruit(fruit: Fruit) {
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML = `
         <div class="card-image">
-            <img src="${fruit.getImage()}" alt="${fruit.getName()}">
+            <img width=100px height=100px src="${fruit.getImage()}" alt="${fruit.getName()}">
         </div>
         <div class="card-content">
             <h3 class="card-title">${fruit.getName()}</h3>
@@ -90,7 +91,20 @@ function showFruit(fruit: Fruit) {
         </div>
     `;
     container.appendChild(card);
-}
+}*/
+
+ const showFruit = (transformedFruit: Fruit): void => {
+  let output: string = `
+              <div class="card" id="fruit-card">
+                  <img  width=100px height=100px src=${transformedFruit.image} alt=${transformedFruit.name} />
+                  <div class="card-body">
+                     <h5 class="card-title">${transformedFruit.name}</h5>
+                     <h6 class="card-subtitle mb-2 text-muted">Price:$${transformedFruit.price}</h5>
+                  </div>
+                </div>
+          `;
+  container.innerHTML += output;
+}; 
 
 //Call getFruits() method globally
 getFruits().then(data => {
